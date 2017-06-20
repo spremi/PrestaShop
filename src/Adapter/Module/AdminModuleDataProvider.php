@@ -32,6 +32,8 @@ use PrestaShopBundle\Service\DataProvider\Admin\CategoriesProvider;
 use PrestaShopBundle\Service\DataProvider\Admin\ModuleInterface;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Translation\TranslatorInterface;
+use Module as LegacyModule;
+use Context;
 
 /**
  * Data provider for new Architecture, about Module object model.
@@ -78,9 +80,9 @@ class AdminModuleDataProvider implements ModuleInterface
 
     public function getAllModules()
     {
-        return \Module::getModulesOnDisk(true,
+        return LegacyModule::getModulesOnDisk(true,
             $this->addonsDataProvider->isAddonsAuthenticated(),
-            (int) \Context::getContext()->employee->id
+            (int) Context::getContext()->employee->id
         );
     }
 
