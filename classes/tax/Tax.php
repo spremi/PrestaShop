@@ -187,6 +187,29 @@ class TaxCore extends ObjectModel
     }
 
     /**
+    * Return name associated to the specified tax id
+    *
+    * @param string $id_tax
+    * @param string $id_lang
+    * @param bool $active (true by default)
+    */
+    public static function getTaxNameById($id_tax, $id_lang, $active = 1)
+    {
+        $sql = new DbQuery();
+        $sql->select('tl.name');
+        $sql->from('tax_lang', 'tl');
+        $sql->leftJoin('tax', 't', 't.`id_tax` = tl.`id_tax`');
+        $sql->where('tl.`id_tax` = ' . (int)$id_tax);
+        $sql->where('tl.`id_lang` = ' . (int)$id_lang);
+
+        if ($active) {
+            $sql->where('t.`active` = 1');
+        }
+
+        return Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue($sql);
+    }
+
+    /**
     * Returns the ecotax tax rate
     *
     * @param id_address
