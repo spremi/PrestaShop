@@ -92,6 +92,32 @@ abstract class HTMLTemplateCore
     }
 
     /**
+     * Returns object containing fully resolved shop address
+     *
+     * @return string
+     */
+    protected function getShopAddressObj()
+    {
+        $id_shop = (int)$this->shop->id;
+
+        $id_state   = Configuration::get('PS_SHOP_STATE_ID',    null, null, $id_shop);
+        $id_country = Configuration::get('PS_SHOP_COUNTRY_ID',  null, null, $id_shop);
+
+        $addr = array();
+
+        $addr['company']  = Configuration::get('PS_SHOP_NAME',  null, null, $id_shop);
+        $addr['address1'] = Configuration::get('PS_SHOP_ADDR1', null, null, $id_shop);
+        $addr['address2'] = Configuration::get('PS_SHOP_ADDR1', null, null, $id_shop);
+        $addr['city']     = Configuration::get('PS_SHOP_CITY',  null, null, $id_shop);
+        $addr['postcode'] = Configuration::get('PS_SHOP_CODE',  null, null, $id_shop);
+
+        $addr['state']    = State::getNameById($id_state);
+        $addr['country']  = Country::getNameById(Configuration::get('PS_LANG_DEFAULT'), $id_country);
+
+        return $addr;
+    }
+
+    /**
      * Returns the invoice logo
      */
     protected function getLogo()
@@ -141,6 +167,7 @@ abstract class HTMLTemplateCore
             'date' => $this->date,
             'title' => $this->title,
             'shop_name' => $shop_name,
+            'shop_addr_obj' => $this->getShopAddressObj(),
             'shop_details' => Configuration::get('PS_SHOP_DETAILS', null, null, (int)$id_shop),
             'width_logo' => $width,
             'height_logo' => $height
