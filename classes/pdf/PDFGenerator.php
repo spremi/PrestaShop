@@ -76,7 +76,8 @@ class PDFGeneratorCore extends TCPDF
      */
     public function __construct($use_cache = false, $orientation = 'P')
     {
-        parent::__construct($orientation, 'mm', 'A4', true, 'UTF-8', $use_cache, false);
+        /* Set landscape as default */
+        parent::__construct('L', 'mm', 'A4', true, 'UTF-8', $use_cache, false);
         $this->setRTL(Context::getContext()->language->is_rtl);
     }
 
