@@ -1,3 +1,18 @@
+# About this fork
+
+This repository contains custom changes to help a friend's installation
+comply with India's newly introduced GST invoice format... while he gets
+more professional solution implemented.
+
+Overall implementation is based on specific assumptions. They will be
+specified in a HOWTO.
+
+**Disclaimers**
+ * I am not a tax expert... forget GST!
+ * Databases aren't my forte either.
+ * My acquaintance with *PrestaShop* is just about a week now.
+ * Changes are mostly *brute force* just to get desired result.
+
 About PrestaShop
 --------
 
