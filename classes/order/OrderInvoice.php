@@ -403,6 +403,50 @@ class OrderInvoiceCore extends ObjectModel
     }
 
     /**
+     * Returns the product taxes breakdown (GST version)
+     *
+     * @param Order $order
+     * @return array
+     */
+    public function getProductBreakdownGST($order = null, $id_lang = 1)
+    {
+        if (!$order) {
+            $order = $this->getOrder();
+        }
+
+        $gst = array();
+
+        //
+        // Get tax details for the order
+        //
+        $details = $order->getProductTaxesDetails();
+
+        //
+        // Extract & transform the tax information
+        // For ease, extract the 'type' CGST/ SGST/ IGST from tax name
+        //
+        foreach ($details as $tax) {
+          $idx = 'o' . $tax['id_order_detail'];
+
+          $name = strtoupper(Tax::getTaxNameById($tax['id_tax'], $id_lang));
+
+          if (preg_match('/^IN_([C|S|I]GST)_(\d+(\.\d+)?)$/', $name, $matches)) {
+              $tax_type = $matches[1];
+
+              $gst[$idx][$tax_type] = array(
+                                        'tax_id'      => $tax['id_tax'],
+                                        'tax_name'    => $name,
+                                        'tax_rate'    => sprintf('%.2f', $tax['tax_rate']),
+                                        'tax_amount'  => $tax['total_amount'],
+                                      );
+          }
+        }
+
+        return $gst;
+    }
+
+
+    /**
      * Returns the shipping taxes breakdown
      *
      * @since 1.5
