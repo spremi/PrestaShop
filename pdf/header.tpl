@@ -24,26 +24,41 @@
  *}
 
 
-<table style="width: 100%">
+<table style="width: 100%; border-collapse: collapse; border-layout: fixed;">
 <tr>
-	<td style="width: 50%">
-		{if $logo_path}
-			<img src="{$logo_path}" style="width:{$width_logo}px; height:{$height_logo}px;" />
-		{/if}
-	</td>
-	<td style="width: 50%; text-align: right;">
-		<table style="width: 100%">
-			<tr>
-				<td style="font-weight: bold; font-size: 14pt; color: #444; width: 100%;">{if isset($header)}{$header|escape:'html':'UTF-8'|upper}{/if}</td>
-			</tr>
-			<tr>
-				<td style="font-size: 14pt; color: #9E9F9E">{$date|escape:'html':'UTF-8'}</td>
-			</tr>
-			<tr>
-				<td style="font-size: 14pt; color: #9E9F9E">{$title|escape:'html':'UTF-8'}</td>
-			</tr>
-		</table>
-	</td>
+  <td rowspan="3" style="width: 30%">{strip}
+    {if $logo_path}
+      <img src="{$logo_path}" style="width:{$width_logo}px; height:{$height_logo}px;" />
+    {/if}
+  {strip}</td>
+  <td rowspan="3" style="width: 50%; font-size: 8pt; text-align: left; color:#484848;">{strip}
+    {if isset($shop_addr_obj)}
+      {$shop_addr_obj.address1|escape:'html':'UTF-8'},
+      {if !empty($shop_addr_obj.address2)}
+        &nbsp;{$shop_addr_obj.address2|escape:'html':'UTF-8'},
+      {/if}<br />
+      {$shop_addr_obj.city|escape:'html':'UTF-8'},&nbsp;
+      {$shop_addr_obj.state|escape:'html':'UTF-8'},<br />
+      {$shop_addr_obj.country|escape:'html':'UTF-8'}
+      {if !empty($shop_addr_obj.postcode)}
+        &nbsp;{$shop_addr_obj.postcode|escape:'html':'UTF-8'}
+      {/if}
+    {/if}
+  {/strip}</td>
+  <td style="width: 20%; font-size: 12pt; text-align: right; color:#242424; line-height: 1.5;">{strip}
+    {if isset($header)}{$header|escape:'html':'UTF-8'|upper}{/if}
+  {/strip}</td>
+</tr>
+<tr>
+  <td style="width: 20%; font-size: 8pt; text-align: right; color:#a0a0a0;">{strip}
+    {$date|escape:'html':'UTF-8'}
+  {/strip}</td>
+</tr>
+<tr>
+  <td style="width: 20%; font-size: 8pt; text-align: right; color:#a0a0a0;">{strip}
+    {$title|escape:'html':'UTF-8'}
+  {/strip}</td>
 </tr>
 </table>
 
+<hr style="height: 1px; border: none; color:#c0c0c0; background-color:#c0c0c0;" />
