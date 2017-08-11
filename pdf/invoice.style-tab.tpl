@@ -125,15 +125,28 @@
     width: 40%;
   }
 
+  /* ---- Summary table     ----- */
+
+  table#summary-tab {
+    width: 100%;
+    padding: {$table_padding_small} {$table_padding_big};
+    border: 1px solid {$color_border};
+  }
+
+  table#summary-tab th {
+    width: 20%;
+  }
+
+  table#summary-tab td {
+    width: 30%;
+  }
+
+
 	table.product {
 		border: 1px solid {$color_border};
 		border-collapse: collapse;
 	}
 
-	table#summary-tab {
-		padding: {$table_padding};
-		border: 1pt solid {$color_border};
-	}
 	table#total-tab {
 		padding: {$table_padding};
 		border: 1pt solid {$color_border};
