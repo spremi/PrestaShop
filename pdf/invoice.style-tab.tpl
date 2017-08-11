@@ -110,13 +110,24 @@
   }
 
 
+  /* ---- Address table     ----- */
+
+  table#addresses-tab {
+    width: 100%;
+    padding: {$table_padding_small} {$table_padding_big};
+  }
+
+  table#addresses-tab th.label {
+    width: 10%;
+  }
+
+  table#addresses-tab td.addr {
+    width: 40%;
+  }
+
 	table.product {
 		border: 1px solid {$color_border};
 		border-collapse: collapse;
-	}
-
-	table#addresses-tab tr td {
-		font-size: large;
 	}
 
 	table#summary-tab {

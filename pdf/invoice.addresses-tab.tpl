@@ -22,14 +22,13 @@
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-<table id="addresses-tab" cellspacing="0" cellpadding="0">
-	<tr>
-		<td width="50%">{if $delivery_address}<span class="bold">{l s='Delivery Address' d='Shop.Pdf' pdf='true'}</span><br/><br/>
-				{$delivery_address}
-			{/if}
-		</td>
-		<td width="50%"><span class="bold">{l s='Billing Address' d='Shop.Pdf' pdf='true'}</span><br/><br/>
-				{$invoice_address}
-		</td>
-	</tr>
+
+
+<table id="addresses-tab">
+  <tr>
+    <th class="label sp sp-bold sp-left">{l s='Ship To:' d='Shop.Pdf' pdf='true'}</th>
+    <td class="addr sp sp-left">{if $delivery_address}{$delivery_address}{/if}</td>
+    <th class="label sp sp-bold sp-left">{l s='Bill To:' d='Shop.Pdf' pdf='true'}</th>
+    <td class="addr sp sp-left">{$invoice_address}</td>
+  </tr>
 </table>
