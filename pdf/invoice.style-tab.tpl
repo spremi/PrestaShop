@@ -23,25 +23,92 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 
-{assign var=color_header value="#F0F0F0"}
-{assign var=color_border value="#000000"}
-{assign var=color_border_lighter value="#CCCCCC"}
-{assign var=color_line_even value="#FFFFFF"}
-{assign var=color_line_odd value="#F9F9F9"}
-{assign var=font_size_text value="9pt"}
-{assign var=font_size_header value="9pt"}
-{assign var=font_size_product value="9pt"}
-{assign var=height_header value="20px"}
-{assign var=table_padding value="4px"}
+
+
+{assign var=color_header        value="#f0f0f0"}
+
+{assign var=color_border        value="#000000"}
+{assign var=color_border_light  value="#888888"}
+
+{assign var=color_line_even     value="#ffffff"}
+{assign var=color_line_odd      value="#fafafa"}
+
+{assign var=color_text_normal   value="#444444"}
+{assign var=color_text_dark     value="#000000"}
+{assign var=color_text_light    value="#888888"}
+
+{assign var=font_size_text      value="8pt"}
+{assign var=font_size_header    value="8pt"}
+{assign var=font_size_product   value="6pt"}
+
+{assign var=height_header       value="20px"}
+
+{assign var=table_padding_big   value="4px"}
+{assign var=table_padding_small value="2px"}
+
+{*
+ * Definitions to be removed after customization is done.
+ *}
+
+{assign var=table_padding       value="4px"}
+
+
+{*
+ * Some styles don't seem to work properly viz. element 'th' is not 'bold'.
+ * Setting 'font-weight: bold;' doesn't have any impact either.
+ *
+ * However, assigning a class containing these attributes seems to be working.
+ *}
 
 <style>
-	table, th, td {
-		margin: 0!important;
-		padding: 0!important;
-		vertical-align: middle;
-		font-size: {$font_size_text};
-		white-space: nowrap;
-	}
+  table {
+    margin: 0px;
+    padding: 0px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: none;
+  }
+
+  .sp {
+    color: {$color_text_normal};
+    font-size: {$font_size_text};
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .sp-bold {
+    font-weight: bold;
+  }
+
+  .sp-center {
+    text-align: center;
+  }
+
+  .sp-left {
+    text-align: left;
+  }
+
+  .sp-right {
+    text-align: right;
+  }
+
+  .sp-border {
+    border: 1px solid {$color_border};
+  }
+
+  .sp-border-light {
+    border: 1px solid {$color_border_light};
+  }
+
+  .sp-head {
+    background-color: {$color_header};
+    font-weight: bold;
+  }
+
+  .sp-row-head {
+    background-color: {$color_header};
+  }
+
 
 	table.product {
 		border: 1px solid {$color_border};
