@@ -248,10 +248,22 @@
     width: 100%;
     padding: {$table_padding_small};
   }
-	table#total-tab {
-		padding: {$table_padding};
-		border: 1pt solid {$color_border};
-	}
+
+  /* ---- Total Table       ----- */
+
+  table#total-tab {
+    width: 100%;
+    padding: {$table_padding};
+    border: 1px solid {$color_border};
+  }
+
+  .total-cell {
+    width: 50%;
+    text-align: right;
+    border: 1px solid {$color_border};
+    font-weight: bold;
+  }
+
 	table#note-tab {
 		padding: {$table_padding};
 		border: 1px solid {$color_border};
