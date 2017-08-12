@@ -22,18 +22,18 @@
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-<table id="payment-tab" width="100%">
-	<tr>
-		<td class="payment center small grey bold" width="44%">{l s='Payment Method' d='Shop.Pdf' pdf='true'}</td>
-		<td class="payment left white" width="56%">
-			<table width="100%" border="0">
-				{foreach from=$order_invoice->getOrderPaymentCollection() item=payment}
-					<tr>
-						<td class="right small">{$payment->payment_method}</td>
-						<td class="right small">{displayPrice currency=$payment->id_currency price=$payment->amount}</td>
-					</tr>
-				{/foreach}
-			</table>
-		</td>
-	</tr>
+<table id="payment-tab">
+  <tr>
+    <td width="40%" class="sp sp-head sp-left sp-border">{l s='Payment Method' d='Shop.Pdf' pdf='true'}</td>
+    <td width="60%" class="sp">
+      <table class="payments">
+        {foreach from=$order_invoice->getOrderPaymentCollection() item=payment}
+          <tr>
+            <td width="60%" class="sp sp-right">{$payment->payment_method}</td>
+            <td width="40%" class="sp sp-right">{displayPrice currency=$payment->id_currency price=$payment->amount}</td>
+          </tr>
+        {/foreach}
+      </table>
+    </td>
+  </tr>
 </table>

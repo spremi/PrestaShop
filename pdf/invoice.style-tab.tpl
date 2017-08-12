@@ -229,6 +229,18 @@
     border: 1px solid {$color_border};
   }
 
+  /* ---- Payments Table    ----- */
+
+  table#payment-tab {
+    width: 100%;
+    padding: {$table_padding_small};
+    border: 1px solid {$color_border};
+  }
+
+  table.payments {
+    width: 100%;
+    padding: {$table_padding_small};
+  }
 
 	table#total-tab {
 		padding: {$table_padding};
@@ -241,7 +253,6 @@
 	table#note-tab td.note{
 		word-wrap: break-word;
 	}
-	table#payment-tab,
 	table#shipping-tab {
 		padding: {$table_padding};
 		border: 1px solid {$color_border};
@@ -280,7 +291,6 @@
 		font-weight: bold;
 	}
 
-	th.payment,
 	th.shipping {
 		background-color: {$color_header};
 		vertical-align: middle;
