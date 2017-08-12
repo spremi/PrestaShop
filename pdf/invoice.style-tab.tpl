@@ -221,6 +221,14 @@
     width: 7%;
   }
 
+  /* ---- Tax table         ----- */
+
+  table#tax-tab {
+    width: 100%;
+    padding: {$table_padding_small};
+    border: 1px solid {$color_border};
+  }
+
 
 	table#total-tab {
 		padding: {$table_padding};
@@ -232,10 +240,6 @@
 	}
 	table#note-tab td.note{
 		word-wrap: break-word;
-	}
-	table#tax-tab {
-		padding: {$table_padding};
-		border: 1pt solid {$color_border};
 	}
 	table#payment-tab,
 	table#shipping-tab {
