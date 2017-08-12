@@ -22,9 +22,9 @@
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-<table id="shipping-tab" width="100%">
-	<tr>
-		<td class="shipping center small grey bold" width="44%">{l s='Carrier' d='Shop.Pdf' pdf='true'}</td>
-		<td class="shipping center small white" width="56%">{$carrier->name}</td>
-	</tr>
+<table id="shipping-tab">
+  <tr>
+    <td width="40%" class="sp sp-head sp-left sp-border">{l s='Shipping Method' d='Shop.Pdf' pdf='true'}</td>
+    <td width="60%" class="sp sp-center sp-border">{$carrier->name}</td>
+  </tr>
 </table>

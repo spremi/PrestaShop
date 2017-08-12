@@ -242,6 +242,12 @@
     padding: {$table_padding_small};
   }
 
+  /* ---- Shipping Table    ----- */
+
+  table#shipping-tab {
+    width: 100%;
+    padding: {$table_padding_small};
+  }
 	table#total-tab {
 		padding: {$table_padding};
 		border: 1pt solid {$color_border};
@@ -252,10 +258,6 @@
 	}
 	table#note-tab td.note{
 		word-wrap: break-word;
-	}
-	table#shipping-tab {
-		padding: {$table_padding};
-		border: 1px solid {$color_border};
 	}
 
 	tr.discount th.header {
@@ -288,12 +290,6 @@
 		background-color: {$color_header};
 		vertical-align: middle;
 		text-align: right;
-		font-weight: bold;
-	}
-
-	th.shipping {
-		background-color: {$color_header};
-		vertical-align: middle;
 		font-weight: bold;
 	}
 
