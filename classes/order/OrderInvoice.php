@@ -383,24 +383,33 @@ class OrderInvoiceCore extends ObjectModel
         *
         */
 
+        //
+        // Breakdown by "Tax Id" instead of "Tax Rate".
+        //
+        // Different individual taxes may have same rate.
+        // But, they must be listed individually on the invoice.
+        //
+        //
         foreach ($details as $row) {
+            $id = $row['id_tax'];
             $rate = sprintf('%.3f', $row['tax_rate']);
-            if (!isset($breakdown[$rate])) {
-                $breakdown[$rate] = array(
+
+            if (!isset($breakdown[$id])) {
+                $breakdown[$id] = array(
                     'total_price_tax_excl' => 0,
                     'total_amount' => 0,
-                    'id_tax' => $row['id_tax'],
+                    'id_tax' => $id,
                     'rate' =>$rate,
                 );
             }
 
-            $breakdown[$rate]['total_price_tax_excl'] += $row['total_tax_base'];
-            $breakdown[$rate]['total_amount'] += $row['total_amount'];
+            $breakdown[$id]['total_price_tax_excl'] += $row['total_tax_base'];
+            $breakdown[$id]['total_amount'] += $row['total_amount'];
         }
 
-        foreach ($breakdown as $rate => $data) {
-            $breakdown[$rate]['total_price_tax_excl'] = Tools::ps_round($data['total_price_tax_excl'], _PS_PRICE_COMPUTE_PRECISION_, $order->round_mode);
-            $breakdown[$rate]['total_amount'] = Tools::ps_round($data['total_amount'], _PS_PRICE_COMPUTE_PRECISION_, $order->round_mode);
+        foreach ($breakdown as $id => $data) {
+            $breakdown[$id]['total_price_tax_excl'] = Tools::ps_round($data['total_price_tax_excl'], _PS_PRICE_COMPUTE_PRECISION_, $order->round_mode);
+            $breakdown[$id]['total_amount'] = Tools::ps_round($data['total_amount'], _PS_PRICE_COMPUTE_PRECISION_, $order->round_mode);
         }
 
         ksort($breakdown);
