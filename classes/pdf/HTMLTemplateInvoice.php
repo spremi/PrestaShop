@@ -426,8 +426,11 @@ class HTMLTemplateInvoiceCore extends HTMLTemplate
             $breakdowns = false;
         }
 
+        $id_lang = Context::getContext()->language->id;
+
         if (isset($breakdowns['product_tax'])) {
             foreach ($breakdowns['product_tax'] as &$bd) {
+                $bd['name_tax'] = Tax::getTaxNameById($bd['id_tax'], $id_lang);
                 $bd['total_tax_excl'] = $bd['total_price_tax_excl'];
             }
         }
