@@ -392,7 +392,7 @@ class OrderInvoiceCore extends ObjectModel
         //
         foreach ($details as $row) {
             $id = $row['id_tax'];
-            $rate = sprintf('%.3f', $row['tax_rate']);
+            $rate = sprintf('%.2f', $row['tax_rate']);
 
             if (!isset($breakdown[$id])) {
                 $breakdown[$id] = array(
