@@ -264,13 +264,17 @@
     font-weight: bold;
   }
 
+  /* ---- Note Table        ----- */
 	table#note-tab {
-		padding: {$table_padding};
-		border: 1px solid {$color_border};
-	}
-	table#note-tab td.note{
-		word-wrap: break-word;
-	}
+    width: 100%;
+    padding: {$table_padding};
+    border: 1px solid {$color_border};
+  }
+
+  .note-text {
+    text-align: justify;
+    word-wrap: break-word;
+  }
 
 	tr.discount th.header {
 		border-top: 1px solid {$color_border};
