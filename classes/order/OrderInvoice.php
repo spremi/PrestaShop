@@ -357,6 +357,10 @@ class OrderInvoiceCore extends ObjectModel
 
         $details = $order->getProductTaxesDetails();
 
+        /*
+         * Don't group taxes when using GST.
+         * We must quote all taxes in the bill.
+         *
         if ($sum_composite_taxes) {
             $grouped_details = array();
             foreach ($details as $row) {
@@ -376,6 +380,8 @@ class OrderInvoiceCore extends ObjectModel
 
             $details = $grouped_details;
         }
+        *
+        */
 
         foreach ($details as $row) {
             $rate = sprintf('%.3f', $row['tax_rate']);
