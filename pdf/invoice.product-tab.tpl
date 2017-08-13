@@ -64,6 +64,8 @@
       {assign var=gst value=[]}
     {/if}
 
+    {assign var=prod_idx value="p{$order_detail.product_id}"}
+
     <tr>
       <!-- S. No -->
       <td class="sp sp-right">{counter}.</td>
@@ -79,7 +81,7 @@
       <td class="sp sp-left">{$order_detail.product_name}</td>
       <!-- MRP -->
       <td class="sp sp-right">{strip}
-        {displayPrice currency=$order->id_currency price=$order_detail.unit_price_tax_incl}
+        {displayPrice currency=$order->id_currency price=$orig_prices[$prod_idx]}
       {/strip}</td>
       <!-- Price -->
       <td class="sp sp-right">{strip}
