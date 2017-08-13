@@ -337,6 +337,7 @@ class HTMLTemplateInvoiceCore extends HTMLTemplate
             'ps_price_compute_precision' => _PS_PRICE_COMPUTE_PRECISION_,
             'round_type' => $round_type,
             'legal_free_text' => $legal_free_text,
+            'orig_prices' => $this->order_invoice->getOriginalPriceInclTax(),
             'gst_data' => $this->order_invoice->getProductBreakdownGST($this->order)
         );
 
