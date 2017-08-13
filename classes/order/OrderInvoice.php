@@ -462,6 +462,51 @@ class OrderInvoiceCore extends ObjectModel
 
 
     /**
+     * Get original prices (with tax) before discount is applied.
+     *
+     * @return array
+     */
+    public function getOriginalPriceInclTax()
+    {
+        $prices = array();
+
+        //
+        // Get products in the invoice
+        //
+        $products = $this->getProductsDetail();
+
+        foreach ($products as $row) {
+            $product_id = $row['product_id'];
+
+            $tmp_specific = 0;  // Required to pass by reference
+
+            $price = Product::getPriceStatic((int)$product_id,
+                        /* $usetax */                 true,
+                        /* $id_product_attribute */   null,
+                        /* $decimals */               6,
+                        /* $divisor */                null,
+                        /* $only_reduc */             false,
+                        /* $usereduc */               false,
+                        /* $quantity */               1,
+                        /* $force_associated_tax */   false,
+                        /* $id_customer */            null,
+                        /* $id_cart */                null,
+                        /* $id_address */             null,
+                        /* &$specific_price_output */ $tmp_specific,
+                        /* $with_ecotax */            false,
+                        /* $use_group_reduction */    false,
+                        /* Context $context */        null,
+                        /* $use_customer_price */     false,
+                        /* $id_customization */       null);
+
+            $prices["p" . $product_id] = sprintf('%.2f', $price);
+        }
+
+        return $prices;
+    }
+
+
+    /**
      * Returns the shipping taxes breakdown
      *
      * @since 1.5
