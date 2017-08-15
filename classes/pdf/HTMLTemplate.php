@@ -107,7 +107,7 @@ abstract class HTMLTemplateCore
 
         $addr['company']  = Configuration::get('PS_SHOP_NAME',  null, null, $id_shop);
         $addr['address1'] = Configuration::get('PS_SHOP_ADDR1', null, null, $id_shop);
-        $addr['address2'] = Configuration::get('PS_SHOP_ADDR1', null, null, $id_shop);
+        $addr['address2'] = Configuration::get('PS_SHOP_ADDR2', null, null, $id_shop);
         $addr['city']     = Configuration::get('PS_SHOP_CITY',  null, null, $id_shop);
         $addr['postcode'] = Configuration::get('PS_SHOP_CODE',  null, null, $id_shop);
 
